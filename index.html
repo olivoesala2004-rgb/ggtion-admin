@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GGTION ADMINISTRATIVO — Seguridad & Riesgos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" data-aos="fade-right">
+      <img src="assets/brand.svg" alt="GGTION ADMINISTRATIVO Logo" class="brand-logo" />
+      <span>GGTION ADMINISTRATIVO</span>
+    </div>
+    <nav class="nav" data-aos="fade-left">
+      <a href="#inicio" class="nav-link">Inicio</a>
+      <a href="#usuario" class="nav-link">Usuario</a>
+      <a href="#quienes" class="nav-link">Quiénes somos</a>
+      <a href="#config" class="nav-link">Configuración</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Pliegue 1: Inicio / Hero -->
+    <section id="inicio" class="section hero">
+      <div class="hero-content" data-aos="fade-up">
+        <h1>Seguridad inteligente para tu empresa</h1>
+        <p>Monitorea riesgos en tiempo real, recibe consejos accionables y toma decisiones con datos.</p>
+        <div class="cta-wrap">
+          <button class="btn btn-primary" id="btnExplorar">Explorar panel</button>
+          <button class="btn btn-ghost" id="btnDemo">Ver demo</button>
+        </div>
+        <div class="hero-illu" data-aos="zoom-in" data-aos-delay="150">
+          <img src="assets/hero-ai.svg" alt="Ilustración IA Seguridad" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Pliegue 2: Panel de Riesgos en tiempo real -->
+    <section id="panel" class="section panel">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Riesgos en tiempo real</h2>
+        <p>Observa indicadores clave de seguridad de la información y sistemas críticos.</p>
+      </div>
+      <div class="cards">
+        <div class="card" data-aos="fade-up" data-aos-delay="50">
+          <div class="card-title">Incidentes hoy</div>
+          <div class="metric" id="mIncidentes">0</div>
+          <div class="trend" id="tIncidentes">—</div>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-title">Intentos de intrusión</div>
+          <div class="metric" id="mIntrusiones">0</div>
+          <div class="trend" id="tIntrusiones">—</div>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="150">
+          <div class="card-title">Disponibilidad (%)</div>
+          <div class="metric" id="mUptime">99.99</div>
+          <div class="trend" id="tUptime">—</div>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-title">Alertas críticas</div>
+          <div class="metric badge" id="mCriticas">0</div>
+          <div class="trend" id="tCriticas">—</div>
+        </div>
+      </div>
+
+      <div class="chart-wrap" data-aos="fade-up" data-aos-delay="250">
+        <h3>Riesgos a nivel mundial (índice comparativo)</h3>
+        <canvas id="riesgosChart" width="900" height="400" aria-label="Gráfica de barras de riesgos globales"></canvas>
+        <small class="chart-note">* Datos demostrativos con actualización en vivo.</small>
+      </div>
+
+      <div class="advices" data-aos="fade-up" data-aos-delay="300">
+        <h3>Consejos rápidos de seguridad</h3>
+        <ul id="listaConsejos">
+          <!-- Consejos llenados por JS -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- Pliegue 3: Quiénes somos -->
+    <section id="quienes" class="section about">
+      <div class="about-grid">
+        <div class="about-text" data-aos="fade-right">
+          <h2>Quiénes somos</h2>
+          <p>Somos un equipo con más de 15 años de experiencia en desarrollo de software, ciberseguridad y gestión de riesgos. Construimos soluciones confiables, escalables y fáciles de usar.</p>
+          <ul class="bullets">
+            <li>Arquitectura segura desde el diseño</li>
+            <li>Monitoreo y respuesta 24/7</li>
+            <li>Cumplimiento y buenas prácticas</li>
+          </ul>
+        </div>
+        <div class="about-illu" data-aos="fade-left">
+          <img src="assets/about-ai.svg" alt="Ilustración equipo y seguridad" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Pliegue 4: Usuario -->
+    <section id="usuario" class="section user">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Usuario</h2>
+        <p>Gestiona tu perfil, roles y notificaciones.</p>
+      </div>
+      <div class="form-card" data-aos="fade-up" data-aos-delay="100">
+        <form id="formUsuario">
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+          </div>
+          <div class="field">
+            <label for="email">Correo</label>
+            <input id="email" name="email" type="email" placeholder="tucorreo@empresa.com" required />
+          </div>
+          <div class="field">
+            <label for="rol">Rol</label>
+            <select id="rol" name="rol">
+              <option>Analista</option>
+              <option>Administrador</option>
+              <option>Auditor</option>
+            </select>
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-ghost" id="btnNotificaciones">Probar notificaciones</button>
+          </div>
+        </form>
+        <div id="usuarioSaved" class="alert" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Pliegue 5: Configuración -->
+    <section id="config" class="section settings">
+      <div class="section-header" data-aos="fade-up">
+        <h2>Configuración</h2>
+        <p>Preferencias de seguridad, integraciones y apariencia.</p>
+      </div>
+      <div class="settings-grid">
+        <div class="setting-item" data-aos="fade-up" data-aos-delay="50">
+          <label class="switch">
+            <input type="checkbox" id="darkMode">
+            <span class="slider"></span>
+          </label>
+          <div>
+            <div class="setting-title">Modo oscuro</div>
+            <div class="setting-desc">Reduce brillo y mejora el contraste.</div>
+          </div>
+        </div>
+
+        <div class="setting-item" data-aos="fade-up" data-aos-delay="100">
+          <button class="btn btn-primary" id="btnSincronizar">Sincronizar con SIEM</button>
+          <div class="setting-desc">Conecta tu SIEM para alertas en tiempo real.</div>
+        </div>
+
+        <div class="setting-item" data-aos="fade-up" data-aos-delay="150">
+          <button class="btn btn-ghost" id="btnExportar">Exportar reporte</button>
+          <div class="setting-desc">Descarga un informe en CSV con los indicadores.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <strong>GGTION ADMINISTRATIVO</strong><br>
+        Seguridad & Riesgos
+      </div>
+      <div>
+        <strong>Contacto</strong><br>
+        Correo: <a href="mailto:olivoesala2004@gmail.com">olivoesala2004@gmail.com</a><br>
+        Teléfono: <a href="tel:+573007320065">+57 300 732 0065</a>
+      </div>
+      <div class="mini-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#usuario">Usuario</a>
+        <a href="#quienes">Quiénes somos</a>
+        <a href="#config">Configuración</a>
+      </div>
+    </div>
+    <div class="legal">© <span id="year"></span> GGTION ADMINISTRATIVO. Todos los derechos reservados.</div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
